@@ -26,7 +26,7 @@ void print_header(const int num_students, const int num_assignments) {
 
 void print_student_row(const Student& student){
 
-    std::cout << pad_name(name, name_width);
+    std::cout << pad_name(student.name, name_width);
 
     for (double score : student.scores) {
         std::cout << std::setw(6)
@@ -50,7 +50,7 @@ void print_student_row(const Student& student){
 
     std::cout << '\n';
 }
-void print_histogram(const Student students[], int num_students);
+void print_histogram(const Student students[], int num_students){
     const char letters[]{'A', 'B', 'C', 'D', 'F'};
 
     std::cout << "\nGRADE DISTRIBUTION\n";
@@ -71,8 +71,9 @@ void print_histogram(const Student students[], int num_students);
 void print_assignment_summary(const Student students[], int num_students) {
     std::cout << "\nASSIGNMENT AVERAGES\n";
 
-    for (auto i{0}; i < num_assignments; i++) {i
-        auto avg{assignment_average(students, i, num_students)};
+    for (int i{}; i < num_assignments; i++){
+
+        double avg{assignment_average(students, i, num_students)};
 
         std::cout << "  A" << i + 1 << ": " << std::setw(6)
                   << std::setprecision(2) << std::fixed << avg;
@@ -90,7 +91,7 @@ void print_roster(const Student students[], int num_students) {
 
     // names is a pointer to the first element; it carries no size of its
     // own, so name_count is how far we are permitted to walk
-    for (auto i{0}; i < name_students; i++) {
+    for (auto i{0}; i < num_students; i++) {
         std::cout << initials_of(students[i].name) << '\t' << students[i].name << '\n';
     }
 }

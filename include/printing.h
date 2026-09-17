@@ -2,7 +2,7 @@
 #ifndef PRINTING_H
 #define PRINTING_H
 
-#incude "Student.h"
+#include "Student.h"
 #include <string>
 
 constexpr int name_width{14};

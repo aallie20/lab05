@@ -2,7 +2,7 @@
 #ifndef GRADING_H
 #define GRADING_H
 
-#include "Student.h""
+#include "Student.h"
 /**
  * @brief Calculates one student's mean score across all assignments.
  *

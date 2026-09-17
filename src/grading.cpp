@@ -9,11 +9,11 @@ double student_average(const Student& student){
     double total{};
 
     // Total the assignment scores for this student
-    for (double score : student.score) {
+    for (double score : student.scores) {
         total += score;
     }
 
-    return total / student.scores.size;
+    return total / student.scores.size();
 }
  double assignment_average(const Student students[], int assignment_index, int num_students){
 
@@ -21,13 +21,13 @@ double student_average(const Student& student){
 
     // Total this assignment's score down every student row
     for (int i{}; i < num_students; i++) {
-        total += students[i].scores[assignments_index];
+        total += students[i].scores[assignment_index];
     }
 
     return total / num_students;
 }
 
-double class_average(const Student students[], int num_students);
+double class_average(const Student students[], int num_students){
 
     double total{};
 
@@ -40,9 +40,9 @@ double class_average(const Student students[], int num_students);
     return total / (num_students * students[0].scores.size());
 }
 
-(const Student& student,
+void find_extremes(const Student& student,
  double& lowest,
- double& highest);
+ double& highest){
     // Start from a real score so the result is correct for any range of
     // values, including all-negative ones
 
@@ -62,7 +62,7 @@ int count_grade(const Student students[], char target, int num_students){
 
     for (int i {}; i < num_students; i++) {
        
-       if (letter_grade(student_average(student[i])) == target) {
+       if (letter_grade(student_average(students[i])) == target) {
             count++;
         }
     }
@@ -70,7 +70,7 @@ int count_grade(const Student students[], char target, int num_students){
     return count;
 }
 
-bool has_perfect_score(const Student& student);
+bool has_perfect_score(const Student& student){
     for (double score : student.scores) {
         if (score >= 100.0) {
             return true;
@@ -80,7 +80,7 @@ bool has_perfect_score(const Student& student);
     return false;
 }
 
-bool is_at_risk(const Student& student);
+bool is_at_risk(const Student& student){
     if (student_average(student) < 70.0) {
         return true;
     }
